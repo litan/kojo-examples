@@ -7,9 +7,9 @@ You might see different definitions elsewhere (so don't get hung up on the words
 
 * Everything in Scala is an object.
 * Objects contain data and methods.
-* These objects can of the following kinds:
+* These objects can be of the following kinds:
   * value objects - these are made of immutable data. They represent values/quantities in the world being modelled.
-  * mutable data objects - provides a way of storing changable data in a program.
+  * mutable data objects - these provide a way of storing changable data in a program.
   * entity objects - these contain mutable date (their state) and behavior that acts on the state. These represent active entities in the world being modelled.  
   (Note - entity state can also be modelled as a mutable/changable reference to values/immutable-data).
 * Todo...
