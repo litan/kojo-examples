@@ -4,7 +4,11 @@
 
 cleari()
 originBottomLeft()
+
 setNoteInstrument(Instrument.ACOUSTIC_BASS)
+playNote(50, 150)
+pause(.16)
+playNote(45, 200)
 
 val cb = canvasBounds
 val gravity = Vector2D(0, -0.1)
