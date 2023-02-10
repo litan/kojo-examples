@@ -13,14 +13,13 @@ playNote(45, 200)
 val cb = canvasBounds
 val gravity = Vector2D(0, -0.1)
 
-class Particle(x0: Double, y0: Double, h0: Double, seed: Boolean) {
+class Particle(x0: Double, y0: Double, hu: Double, seed: Boolean) {
     var location = Vector2D(x0, y0)
     private var velocity =
         if (seed) Vector2D(0, random(5, 12))
         else randomExplosionVector
     private var acceleration = Vector2D(0, 0)
     private var lifespan = 255.0
-    private var hu = h0
     private var exploded = false
 
     private val pic = Picture.circle(0.5)
@@ -77,8 +76,8 @@ class Particle(x0: Double, y0: Double, h0: Double, seed: Boolean) {
 }
 
 class Firework() {
-    private val hu = random(255)
-    private var firework = new Particle(random(cwidth), 0, hu, true)
+    private val hu = random(360)
+    private val firework = new Particle(random(cwidth), 0, hu, true)
     private val particles = ArrayBuffer.empty[Particle]
 
     def done: Boolean = {
