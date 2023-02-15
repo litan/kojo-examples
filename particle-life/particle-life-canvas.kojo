@@ -115,7 +115,7 @@ object MusicMaker {
         }
         noteIdx = mathx.constrain(noteIdx, 0, raagPitches.length - 1).toInt
         prevNoteIdx = noteIdx
-        playNote(raagPitches(noteIdx), 50)
+        playNote(raagPitches(noteIdx), 30)
     }
 }
 
