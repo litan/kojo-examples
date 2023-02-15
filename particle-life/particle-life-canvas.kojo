@@ -99,20 +99,21 @@ object MusicMaker {
     }
 
     def show() {
-        var noteIdx = mathx.map(avgDistance, 5, 65, 0, raagPitches.length - 1).toInt
+        var noteIdx = mathx.map(avgDistance, 5, 60, 0, raagPitches.length - 1).toInt
         noteIdx = mathx.constrain(noteIdx, 0, raagPitches.length - 1).toInt
         if (noteIdx == prevNoteIdx) {
             if (noteIdx == 0) {
-                noteIdx = 1
+                noteIdx = 2
             }
             else if (noteIdx == raagPitches.length - 1) {
-                noteIdx = raagPitches.length - 2
+                noteIdx = raagPitches.length - 3
             }
             else {
-                val idxDelta = if (randomBoolean) 1 else -1
+                val idxDelta = if (randomBoolean) 2 else -2
                 noteIdx += idxDelta
             }
         }
+        noteIdx = mathx.constrain(noteIdx, 0, raagPitches.length - 1).toInt
         prevNoteIdx = noteIdx
         playNote(raagPitches(noteIdx), 50)
     }
