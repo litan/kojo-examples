@@ -49,7 +49,7 @@ class Particle(x0: Double, y0: Double, color: Color) {
                     val g = interactionMatrix(colorIdx)(p.colorIdx)
                     if (g != 0) {
                         val f = g / d
-                        MusicMaker.addForce(d)
+                        MusicMaker.addDistance(d)
                         val delta = location - p.location
                         stepForce += delta * f / 1
                     }
@@ -77,29 +77,30 @@ class Particle(x0: Double, y0: Double, color: Color) {
 }
 
 object MusicMaker {
-    private var totalForce = 0.0
-    private var forceN = 0
-    private var avgForce = 0.0
+    private var totalDistance = 0.0
+    private var distanceN = 0
+    private var avgDistance = 0.0
     private var prevNoteIdx = 0
     val raagPitches =
         PSeq(48, 49, 52, 53, 55, 56, 59, 60, 61, 64, 65, 67, 68, 71, 72)
 
     def stepStart() {
-        totalForce = 0
-        forceN = 0
+        totalDistance = 0
+        distanceN = 0
     }
 
-    def addForce(f: Double) {
-        totalForce += f
-        forceN += 1
+    def addDistance(d: Double) {
+        totalDistance += d
+        distanceN += 1
     }
 
     def stepEnd() {
-        avgForce = totalForce / forceN
+        avgDistance = totalDistance / distanceN
     }
 
     def show() {
-        var noteIdx = mathx.map(avgForce, 5, 50, 0, raagPitches.length - 1).toInt
+        var noteIdx = mathx.map(avgDistance, 5, 65, 0, raagPitches.length - 1).toInt
+        noteIdx = mathx.constrain(noteIdx, 0, raagPitches.length - 1).toInt
         if (noteIdx == prevNoteIdx) {
             if (noteIdx == 0) {
                 noteIdx = 1
