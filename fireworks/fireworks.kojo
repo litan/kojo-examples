@@ -1,14 +1,9 @@
-// Inspired  by
-// https://github.com/CodingTrain/Coding-Challenges/tree/main/027_FireWorks/Processing/CC_027_FireWorks_2D
-// needs Kojo 2.9.24 or later for sound effects
-
 cleari()
 originBottomLeft()
 setBackground(black)
 
 setNoteInstrument(Instrument.ACOUSTIC_BASS)
 playNote(50, 150)
-pause(.16)
 playNote(45, 200)
 
 val cb = canvasBounds
@@ -23,7 +18,7 @@ class Particle(x0: Double, y0: Double, hu: Double, seed: Boolean) {
     private var lifespan = 255.0
     private var exploded = false
 
-    private val pic = Picture.circle(0.5)
+    private val pic = Picture.circle(1)
 
     def randomExplosionVector: Vector2D = {
         val rv1 = Vector2D(randomNormalDouble, randomNormalDouble)
@@ -49,7 +44,7 @@ class Particle(x0: Double, y0: Double, hu: Double, seed: Boolean) {
 
     def explode() {
         // note, duration, volume
-        playNote(20, 60, 127)
+        playNote(15, 30, 127)
         exploded = true
     }
 
@@ -73,7 +68,7 @@ class Particle(x0: Double, y0: Double, hu: Double, seed: Boolean) {
             pic.setPenColor(clr)
             pic.setFillColor(clr)
             if (seed) {
-                pic.setPenThickness(2)
+                pic.setPenThickness(3)
             }
             else {
                 pic.setPenThickness(2)
@@ -153,3 +148,8 @@ animate {
     viewState()
 }
 
+// Inspired  by
+// https://github.com/CodingTrain/Coding-Challenges/tree/main/027_FireWorks/Processing/CC_027_FireWorks_2D
+
+// For more details, check out:
+// https://github.com/litan/kojo-examples/tree/main/fireworks
