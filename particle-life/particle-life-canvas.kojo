@@ -3,12 +3,13 @@
 cleari()
 originBottomLeft()
 drawStage(black)
+setRefreshRate(8)
 initRandomGenerator(1676480160006L)
 
 val randomInteraction = false
 val cb = canvasBounds
 
-setNoteInstrument(Instrument.ACOUSTIC_GUITAR)
+setNoteInstrument(Instrument.PIANO)
 playNote(50, 200)
 playNote(45, 300)
 pauseMillis(600)
