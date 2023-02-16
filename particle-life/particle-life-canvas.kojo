@@ -4,9 +4,10 @@ cleari()
 originBottomLeft()
 drawStage(black)
 setRefreshRate(8)
-initRandomGenerator(1676480160006L)
+initRandomGenerator()
+//initRandomGenerator(1676480160006L)
 
-val randomInteraction = false
+val randomInteraction = true
 val cb = canvasBounds
 
 setNoteInstrument(Instrument.PIANO)
@@ -27,9 +28,9 @@ val colors: PSeq[Color] = PSeq(cm.red, cm.lightBlue, cm.yellow)
 val interactionMatrix =
     if (randomInteraction)
         PSeq(
-            PSeq.fill(3)(randomDouble(-0.3, 0.3)),
-            PSeq.fill(3)(randomDouble(-0.3, 0.3)),
-            PSeq.fill(3)(randomDouble(-0.3, 0.3)),
+            PSeq.fill(3)(randomDouble(-1, 1)),
+            PSeq.fill(3)(randomDouble(-1, 1)),
+            PSeq.fill(3)(randomDouble(-1, 1)),
         )
     else
         PSeq(
