@@ -1,3 +1,5 @@
+// written in OO style
+
 cleari()
 originBottomLeft()
 drawStage(black)
