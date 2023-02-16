@@ -1,7 +1,7 @@
 cleari()
 originBottomLeft()
 drawStage(black)
-initRandomGenerator()
+initRandomGenerator(1676480160006L)
 
 val randomMatrix = false
 val cb = canvasBounds
@@ -9,6 +9,7 @@ val cb = canvasBounds
 setNoteInstrument(Instrument.ACOUSTIC_GUITAR)
 playNote(50, 200)
 playNote(45, 300)
+pauseMillis(600)
 
 //val PSeq = Array; type PSeq[A] = Array[A]
 //val PSeq = ArrayBuffer; type PSeq[A] = ArrayBuffer[A]
