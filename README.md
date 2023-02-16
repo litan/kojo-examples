@@ -1,2 +1,2 @@
 # kojo-examples
-Fun/educative Example programs for Kojo
+Fun/educative example programs for Kojo
