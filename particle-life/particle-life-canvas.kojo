@@ -5,7 +5,7 @@ originBottomLeft()
 drawStage(black)
 initRandomGenerator(1676480160006L)
 
-val randomMatrix = false
+val randomInteraction = false
 val cb = canvasBounds
 
 setNoteInstrument(Instrument.ACOUSTIC_GUITAR)
@@ -24,7 +24,7 @@ val Nc = N / 3
 val colors: PSeq[Color] = PSeq(cm.red, cm.lightBlue, cm.yellow)
 
 val interactionMatrix =
-    if (randomMatrix)
+    if (randomInteraction)
         PSeq(
             PSeq.fill(3)(randomDouble(-0.3, 0.3)),
             PSeq.fill(3)(randomDouble(-0.3, 0.3)),
