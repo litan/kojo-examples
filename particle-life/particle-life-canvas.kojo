@@ -59,6 +59,9 @@ class Particle(x0: Double, y0: Double, color: Color) {
                         stepForce += delta * f / 1
                     }
                 }
+                else {
+                    MusicMaker.addSpace(d)
+                }
             }
         }
     }
@@ -85,6 +88,9 @@ object MusicMaker {
     private var totalDistance = 0.0
     private var distanceN = 0
     private var avgDistance = 0.0
+    private var totalSpace = 0.0
+    private var spaceN = 0
+    private var avgSpace = 0.0
     private var prevNoteIdx = 0
     val raagPitches =
         PSeq(48, 49, 52, 53, 55, 56, 59, 60, 61, 64, 65, 67, 68, 71, 72)
@@ -92,6 +98,8 @@ object MusicMaker {
     def stepStart() {
         totalDistance = 0
         distanceN = 0
+        totalSpace = 0
+        spaceN = 0
     }
 
     def addDistance(d: Double) {
@@ -99,12 +107,30 @@ object MusicMaker {
         distanceN += 1
     }
 
+    def addSpace(s: Double) {
+        totalSpace += s
+        spaceN += 1
+    }
+
     def stepEnd() {
         avgDistance = totalDistance / distanceN
+        avgSpace = totalSpace / spaceN
+        //                println(noteNum)
+    }
+
+    // play with these to generate more expressive music
+    def noteNumRangeMin = 5
+    def noteNumRangeMax = 60
+    def noteNum = {
+        val f1 = distanceN.toDouble / (N * (N - 1)) * 100
+        f1 + avgDistance
     }
 
     def show() {
-        var noteIdx = mathx.map(avgDistance, 5, 60, 0, raagPitches.length - 1).toInt
+        var noteIdx = mathx.map(
+            noteNum, noteNumRangeMin, noteNumRangeMax,
+            0, raagPitches.length - 1
+        ).toInt
         noteIdx = mathx.constrain(noteIdx, 0, raagPitches.length - 1).toInt
         if (noteIdx == prevNoteIdx) {
             if (noteIdx == 0) {
