@@ -21,7 +21,13 @@ case object MoveUp extends Msg
 case object MoveDown extends Msg
 case object DontMove extends Msg
 
-val nh = 20
+val nh = 10
+
+def randomSpeed(min: Int, max: Int) = {
+    if (randomBoolean) random(min, max)
+    else random(-(max - 1), -min + 1)
+}
+
 def init: Model =
     Model(
         Player(cb.x + cb.width / 2, cb.y + 20, 40, 40),
@@ -30,14 +36,14 @@ def init: Model =
                 cb.x + cb.width / (nh + 2) * n,
                 cb.y + randomDouble(100, cb.height - 200),
                 40, 40,
-                Vector2D(random(1, 4), random(1, 4))
+                Vector2D(randomSpeed(2, 4), randomSpeed(2, 4))
             )
         },
         false
     )
 
 val speed = 5
-val cd = new net.kogics.kojo.gaming.CollisionDetector()
+val cd = new net.kogics.kojo.fpgaming.CollisionDetector()
 def update(m: Model, msg: Msg): Model = msg match {
     case MoveLeft =>
         val player = m.player
